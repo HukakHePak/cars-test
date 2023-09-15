@@ -1,19 +1,17 @@
-import express from "express";
-import mongo from "./mongo";
-import mongoose from "mongoose";
+import express from "express"
+import mongo from "./mongo"
+import mongoose from "mongoose"
 
 const app = express()
 
-import dotenv from "dotenv";
-dotenv.config();
+import dotenv from "dotenv"
+dotenv.config()
 
+import router from "./api/router"
+import { successConnectLog, ErrorConnect } from "./utils/utils"
+import decors from "./de-cors"
 
-// const router = require("./api/router")
-import router from "./api/router";
-import  { successConnectLog, ErrorConnect } from "./utils/utils";
-// const decors = require("./de-cors")
-
-// app.use(decors)
+app.use(decors)
 
 app.enable("trust proxy")
 app.use(express.json())

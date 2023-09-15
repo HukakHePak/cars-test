@@ -1,4 +1,4 @@
-const cors = require("cors")
+import cors from "cors"
 
 const corsConfig = {
   development: { origin: [/\.github\.io$/, /:8000/, /note-lawn\.ru/], credentials: true },
@@ -10,4 +10,4 @@ const corsConfig = {
 
 const decors = cors(corsConfig)
 
-module.exports = decors
+export default decors

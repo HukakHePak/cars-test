@@ -1,14 +1,18 @@
 {
   "compilerOptions": {
     "target": "ES6",
-    "baseUrl": "./server",
+    "baseUrl": "./src",
+    
     "outDir": "./build/",
     "noImplicitAny": true,
     "module": "commonjs",
     "esModuleInterop": true,
-    "allowJs": true,
+    "allowJs": false,
     "moduleResolution": "node",
   },
-  "include": ["server", "server/utils", "server/api"],
-  "exclude": ["**/node_modules", "**/.*/"]
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
 }
