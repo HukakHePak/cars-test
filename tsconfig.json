@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "baseUrl": "./server",
+    "outDir": "./build/",
+    "noImplicitAny": true,
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "allowJs": true,
+    "moduleResolution": "node",
+  },
+  "include": ["server", "server/utils", "server/api"],
+  "exclude": ["**/node_modules", "**/.*/"]
+}
