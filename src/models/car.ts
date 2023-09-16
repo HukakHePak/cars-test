@@ -1,4 +1,5 @@
 import mongoose from "mongoose"
+import IParameter from "../../client/interfaces/IParameter"
 
 export interface ICar extends mongoose.Document {
   brand: String
@@ -23,11 +24,41 @@ export const CarSchema = new mongoose.Schema({
 const Car = mongoose.model<ICar>("Car", CarSchema)
 export default Car
 
-export const parameters = [
+export const CarParameters: IParameter[] = [
+  {
+      name: 'id',
+      short: 'i',
+      type: String,
+      field: "_id"
+  },
   {
       name: 'brand',
       short: 'b',
       type: String,
       field: "brand"
-  }
+  },
+  {
+      name: 'model',
+      short: 'm',
+      type: String,
+      field: "model"
+  },
+  {
+      name: 'price',
+      short: 'p',
+      type: Number,
+      field: "price"
+  },
+  {
+      name: 'date',
+      short: 'd',
+      type: String,
+      field: "productionDate"
+  },
+  {
+      name: 'color',
+      short: 'c',
+      type: String,
+      field: "color"
+  },
 ]

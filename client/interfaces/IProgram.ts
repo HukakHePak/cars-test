@@ -2,7 +2,7 @@ import IParameter from "./IParameter"
 
 interface IProgram {
     name: String
-    parameters: IParameter<StringConstructor | NumberConstructor | DateConstructor>[]
+    parameters: IParameter[]
 }
 
 export default IProgram

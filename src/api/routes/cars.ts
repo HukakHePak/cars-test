@@ -2,7 +2,7 @@ import safe from "api/middleware/safe"
 import express, { Request, Response } from "express"
 import createHttpError from "http-errors"
 import { SortOrder } from "mongoose"
-import Car, { ICar } from "schemas/car"
+import Car, { ICar } from "models/car"
 
 const router = express.Router()
 

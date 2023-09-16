@@ -1,4 +1,4 @@
-import { ICar } from "schemas/car"
+import { ICar } from "models/car"
 import parser from "./parser"
 import { PROGRAMS, REST_API } from "../constants/consts"
 import api, { ISortQuery } from "./api"

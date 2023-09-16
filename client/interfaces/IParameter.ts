@@ -1,9 +1,10 @@
-interface IParameter<T> {
+interface IP<T> {
     name: String
-    short: String | null
+    short?: String
     type: T
     field: String
-
+    description?: String
 }
 
+export interface IParameter extends IP<StringConstructor | NumberConstructor | DateConstructor> { }
 export default IParameter

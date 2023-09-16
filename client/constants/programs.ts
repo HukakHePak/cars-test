@@ -1,3 +1,4 @@
+import { CarParameters } from "models/car";
 import IProgram from "../interfaces/IProgram";
 import { PROGRAMS } from "./consts";
 
@@ -5,31 +6,11 @@ import { PROGRAMS } from "./consts";
 const programs: IProgram[] = [
     {
         name: 'POST',
-        parameters: [
-            {
-                name: 'brand',
-                short: 'b',
-                type: String,
-                field: "brand"
-            },
-            {
-                name: 'price',
-                short: 'p',
-                type: Number,
-                field: "price"
-            }
-        ]
+        parameters: CarParameters
     },
     {
         name: 'PUT',
-        parameters: [
-            {
-                name: 'brand',
-                short: 'b',
-                type: Date,
-                field: "brand"
-            }
-        ]
+        parameters: CarParameters
     },
     {
         name: 'HELP',
