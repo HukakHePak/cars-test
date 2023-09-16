@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon src/server.ts",
     "build": "webpack",
-    "pretty": "npx prettier src"
+    "pretty": "npx prettier src client --write"
   },
   "keywords": [
     "auto",
@@ -27,13 +27,13 @@
     "webpack-cli": "^5.1.1"
   },
   "dependencies": {
-    "cookie-session": "^2.0.0",
     "cors": "^2.8.5",
     "date-diff-js": "^1.0.4",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "mongodb": "^4.11.0",
-    "mongoose": "^6.8.1"
+    "mongoose": "^6.8.1",
+    "ts-loader": "^9.4.4"
   },
   "author": "HukakHePak",
   "license": "ISC"

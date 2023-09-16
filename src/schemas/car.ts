@@ -1,12 +1,18 @@
 import mongoose from "mongoose"
 
 export interface ICar extends mongoose.Document {
-  name: string
-  somethingElse?: number
+  brand: String
+  model: String
+  price: Number
+  productionDate: Date
 }
+
 export const CarSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  somethingElse: Number
+  brand: String,
+  model: String,
+  price: Number,
+  productionDate: Date
 })
+
 const Car = mongoose.model<ICar>("Car", CarSchema)
 export default Car
