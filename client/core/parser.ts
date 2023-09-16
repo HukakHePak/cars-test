@@ -1,6 +1,6 @@
 import { filterParameter } from "utils/utils"
-import { PARAMETER_TYPES, PARAMS_LIMIT, PARAMS_SIGN } from "../core/consts"
-import programs from "../core/programs"
+import { PARAMS_SIGN } from "../constants/consts"
+import programs from "../constants/programs"
 import moment from "moment"
 
 function parser(text: String) {
@@ -27,18 +27,18 @@ function parser(text: String) {
         continue;
       }
       //    ищем описание параметра программы
-      const parameter = program.parameters.find(item => filterParameter(item.name) === parameterName) 
+      const parameter = program.parameters.find((item) => filterParameter(item.name) === parameterName || filterParameter(item.short) === parameterName) 
 
       switch (parameter.type) {   // здесь же распарсим строчные значения в нужные
-        case PARAMETER_TYPES.Number:
+        case Number:
           parameters.set(parameter.field, parseInt(paramBuffer.at(-1))) // запишем последнее найденное
           break;
       
-        case PARAMETER_TYPES.Date:
+        case Date:
           parameters.set(parameter.field, moment(paramBuffer.at(-1), "DD.MM.YYYY").toDate())  // аналогично с датой
           break;
       
-        case PARAMETER_TYPES.String:
+        case String:
           parameters.set(parameter.field, [...paramBuffer])   //    запишем что насобирали по пути к команде
           paramBuffer.splice(0);   // почистим лист
           break;

@@ -1,6 +1,5 @@
 export const API_URL = process.env.APP_API || "https://note-lawn.ru"
 
-export const PARAMS_LIMIT = 100;
 export const PARAMS_SIGN = "-";
 
 export const REST_API = {
@@ -8,6 +7,10 @@ export const REST_API = {
   POST: "POST",
   PUT: "PUT",
   DELETE: "DELETE"
+}
+
+export enum TYPES {
+
 }
 
 export const PROGRAMS = {
@@ -18,11 +21,3 @@ export const PROGRAMS = {
     "PUT-CARS": "PUT-CARS",
     "DELETE-CARS": "DELETE-CARS"
 }
-
-export enum PARAMETER_TYPES {
-    String,
-    Number,
-    Date,
-    Array
-}
-

@@ -1,6 +1,6 @@
 import { ICar } from "schemas/car"
-import parser from "../parser/parser"
-import { PROGRAMS, REST_API } from "./consts"
+import parser from "./parser"
+import { PROGRAMS, REST_API } from "../constants/consts"
 import api, { ISortQuery } from "./api"
 import { Response } from "node-fetch"
 import moment from "moment"

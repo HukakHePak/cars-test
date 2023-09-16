@@ -22,3 +22,12 @@ export const CarSchema = new mongoose.Schema({
 
 const Car = mongoose.model<ICar>("Car", CarSchema)
 export default Car
+
+export const parameters = [
+  {
+      name: 'brand',
+      short: 'b',
+      type: String,
+      field: "brand"
+  }
+]

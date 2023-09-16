@@ -1,6 +1,6 @@
 import { ICar } from "schemas/car"
-import parser from "../parser/parser"
-import { PROGRAMS, REST_API } from "./consts"
+import parser from "./parser"
+import { PROGRAMS, REST_API } from "../constants/consts"
 import api, { ISortQuery } from "./api"
 import { Response } from "node-fetch"
 import moment from "moment"
@@ -8,13 +8,22 @@ import messageHandler from "./messageHandler"
 
 function interpreter (data: String) {
     const args = parser(data)
+
+    console.log(args);
+    return;
+
+    if(!args.program) {
+        console.error("bad command")    // TODO: show help
+        return;
+    }
+    
     const params = args.parameters
   
     let request: Promise<Response> | null = null
   
     let car = {} as ICar
   
-    switch (args.program) {
+    switch (args.program.name) {
       case REST_API.GET:
         request = api.get(<ISortQuery>{
           sortBy: params.get("by"),

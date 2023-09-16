@@ -1,14 +1,22 @@
-import { PARAMETER_TYPES, PROGRAMS } from "./consts";
+import IProgram from "../interfaces/IProgram";
+import { PROGRAMS } from "./consts";
 
-const programs = [
+
+const programs: IProgram[] = [
     {
         name: 'POST',
         parameters: [
             {
                 name: 'brand',
                 short: 'b',
-                type: PARAMETER_TYPES.String,
+                type: String,
                 field: "brand"
+            },
+            {
+                name: 'price',
+                short: 'p',
+                type: Number,
+                field: "price"
             }
         ]
     },
@@ -18,7 +26,7 @@ const programs = [
             {
                 name: 'brand',
                 short: 'b',
-                type: PARAMETER_TYPES.String,
+                type: Date,
                 field: "brand"
             }
         ]
@@ -29,7 +37,7 @@ const programs = [
             {
                 name: 'command',
                 short: 'c',
-                type: PARAMETER_TYPES.String,
+                type: Number,
                 field: "command"
             }
         ]

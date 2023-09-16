@@ -1,5 +1,5 @@
 import fetch, { RequestInfo, RequestInit, Response } from "node-fetch"
-import { API_URL, REST_API } from "./consts"
+import { API_URL, REST_API } from "../constants/consts"
 
 export type ISortQuery = { sortBy: string | ""; sortTo: string | ""}
 

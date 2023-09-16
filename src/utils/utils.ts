@@ -1,4 +1,4 @@
-import { PARAMS_SIGN } from "../../client/core/consts"
+import { PARAMS_SIGN } from "../../client/constants/consts"
 
 export function ArrayOf(str: string, length: number) {
   return Array.from({ length }).map(() => str)
@@ -12,6 +12,6 @@ export function ErrorConnect(log: string) {
   return new Error(`${log} init connection error.`)
 }
 
-export function filterParameter (parameterName: string) {
+export function filterParameter (parameterName: string | String) {
   return parameterName.split(PARAMS_SIGN).join("").toLowerCase();
 }
