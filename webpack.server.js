@@ -1,11 +1,12 @@
 const path = require("path")
+const FileManagerPlugin = require("filemanager-webpack-plugin")
 
 module.exports = {
   mode: "development",
   target: "node",
   entry: "./src/server.ts",
   resolve: {
-    alias: ["schemas", "api", "utils", "public", "models", "pages", "scss", "stores", "utils"].reduce(
+    alias: ["models", "api", "utils", "public", "models", "client", "constatns", "core", "interfaces", "helpers"].reduce(
       (alias, item) => {
         alias[item] = path.resolve(__dirname, `src/${item}/`);
         return alias;
@@ -24,6 +25,17 @@ module.exports = {
       },
     ]
   },
+  plugins: [
+    new FileManagerPlugin({
+      events: {
+        onStart: {
+          copy:  [
+            { source: 'public', destination: 'build/public' }
+          ],
+        }
+      }
+    }),
+  ],
   output: {
     path: path.join(__dirname, "/build"),
     filename: "server.js",
