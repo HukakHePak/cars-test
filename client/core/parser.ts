@@ -8,7 +8,7 @@ function parser(text: String) {
 
   const programName = args.splice(0, 1)[0].toLowerCase()  // найдем имя запускаемой программы
 
-  const program = programs.find(item => item.name.toLowerCase() === programName)    // проверим, есть ли такая в нашем списке
+  const program = programs.find(item => (item.target ? `${item.name}-${item.target}` : item.name).toLowerCase() === programName)    // проверим, есть ли такая в нашем списке
 
    if(!program) {
        return { program: null, parameters: null }
@@ -31,15 +31,15 @@ function parser(text: String) {
 
       switch (parameter.type) {   // здесь же распарсим строчные значения в нужные
         case Number:
-          parameters.set(parameter.field, parseInt(paramBuffer.at(-1))) // запишем последнее найденное
+          parameters.set(parameter.name, parseInt(paramBuffer.at(-1))) // запишем последнее найденное
           break;
       
         case Date:
-          parameters.set(parameter.field, moment(paramBuffer.at(-1), "DD.MM.YYYY").toDate())  // аналогично с датой
+          parameters.set(parameter.name, moment(paramBuffer.at(-1), "DD.MM.YYYY").toDate())  // аналогично с датой
           break;
       
         case String:
-          parameters.set(parameter.field, [...paramBuffer])   //    запишем что насобирали по пути к команде
+          parameters.set(parameter.name, [...paramBuffer].join(" "))   //    запишем что насобирали по пути к команде
           paramBuffer.splice(0);   // почистим лист
           break;
       

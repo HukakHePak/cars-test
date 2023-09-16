@@ -1,7 +1,7 @@
 import mongoose from "mongoose"
 import IParameter from "../../client/interfaces/IParameter"
 
-export interface ICar extends mongoose.Document {
+export class ICar extends mongoose.Document {
   brand: String
   model: String
   price: Number

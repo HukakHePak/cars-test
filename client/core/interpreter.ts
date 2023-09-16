@@ -1,48 +1,50 @@
 import { ICar } from "models/car"
 import parser from "./parser"
-import { PROGRAMS, REST_API } from "../constants/consts"
-import api, { ISortQuery } from "./api"
+import { PROGRAMS } from "../constants/consts"
+import api from "./api"
 import { Response } from "node-fetch"
 import moment from "moment"
 import messageHandler from "./messageHandler"
+import ISortQuery from "../interfaces/ISortQuery"
 
 function interpreter (data: String) {
-    const args = parser(data)
+    const { program, parameters } = parser(data)
 
-    console.log(args);
-    return;
+    console.log(program, parameters);
+    // return;
 
-    if(!args.program) {
+    if(!program) {
         console.error("bad command")    // TODO: show help
         return;
     }
     
-    const params = args.parameters
+    const params = parameters
   
     let request: Promise<Response> | null = null
   
     let car = {} as ICar
+
+    const type = program.type;
+
+    const body = {} as typeof type
+
+    program.parameters.forEach( parameter => {
+        body[parameter.field as string] = parameters.get(parameter.name)
+    });
   
-    switch (args.program.name) {
-      case REST_API.GET:
+    switch (program.name) {
+      case PROGRAMS.GET:
         request = api.get(<ISortQuery>{
           sortBy: params.get("by"),
           sortTo: params.get("to")
         })
         break
 
-      case REST_API.PUT:
-        car._id = params.get("id")
-        car.brand = params.get("brand")
-        car.model = params.get("model")
-        car.price = parseInt(params.get("price"))
-        car.productionDate = moment(params.get("date"), "DD.MM.YYYY").toDate()
-        car.color = params.get("color")
-
-        request = api.put(car)
+      case PROGRAMS.PUT:
+        request = api.put(body)
         break
 
-      case REST_API.POST:
+      case PROGRAMS.POST:
         car.brand = params.get("brand")
         car.model = params.get("model")
         car.price = parseInt(params.get("price"))
@@ -52,7 +54,7 @@ function interpreter (data: String) {
         request = api.post(car)
         break
 
-      case REST_API.DELETE:
+      case PROGRAMS.DELETE:
         request = api.delete(params.get("id"))
         break
 

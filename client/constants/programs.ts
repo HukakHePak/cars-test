@@ -1,30 +1,45 @@
-import { CarParameters } from "models/car";
+import { CarParameters, ICar } from "models/car";
 import IProgram from "../interfaces/IProgram";
-import { PROGRAMS } from "./consts";
+import { IdParameters, PROGRAMS, QueryParameters, TARGETS } from "./consts";
+import ISortQuery from "../interfaces/ISortQuery";
+// import { SortQuery } from "../interfaces/ISortQuery";
 
 
-const programs: IProgram[] = [
+
+const programs: IProgram<ICar>[] = [
     {
-        name: 'POST',
-        parameters: CarParameters
+        name: PROGRAMS.GET,
+        target: TARGETS.CARS,
+        parameters: QueryParameters,
+        // type: new ICar
     },
     {
-        name: 'PUT',
-        parameters: CarParameters
+        name: PROGRAMS.POST,
+        target: TARGETS.CARS,
+        parameters: CarParameters,
+        type: new ICar
     },
     {
-        name: 'HELP',
-        parameters: [
-            {
-                name: 'command',
-                short: 'c',
-                type: Number,
-                field: "command"
-            }
-        ]
+        name: PROGRAMS.PUT,
+        target: TARGETS.CARS,
+        parameters: CarParameters,
+        // type: new ICar
     },
     {
-        name: 'EXIT',
+        name: PROGRAMS.DELETE,
+        target: TARGETS.CARS,
+        parameters: IdParameters
+    },
+    {
+        name: PROGRAMS.EXIT,
+        parameters: []
+    },
+    {
+        name: PROGRAMS.QUIT,
+        parameters: []
+    },
+    {
+        name: PROGRAMS.HELP,
         parameters: [],
     }
 ]
