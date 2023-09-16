@@ -1,4 +1,5 @@
 const path = require("path")
+const FileManagerPlugin = require("filemanager-webpack-plugin")
 
 module.exports = {
   mode: "development",
@@ -24,6 +25,17 @@ module.exports = {
       },
     ]
   },
+  plugins: [
+    new FileManagerPlugin({
+      events: {
+        onStart: {
+          copy:  [
+            { source: 'public', destination: 'build/public' }
+          ],
+        }
+      }
+    }),
+  ],
   output: {
     path: path.join(__dirname, "/build"),
     filename: "server.js",

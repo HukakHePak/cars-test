@@ -1,9 +1,12 @@
 import express, { Request, Response } from "express"
+import path from "path"
 
 const router = express.Router()
 
 router.get("/", (req: Request, res: Response) => {
-  res.send() // TODO: download app
+  res.sendFile(path.resolve("public/app/setup.exe" ))
+
+  res.redirect("/");
 })
 
 const downloadRoute = router

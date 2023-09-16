@@ -1,6 +1,6 @@
 import IParameter from "../interfaces/IParameter"
 
-export const API_URL = process.env.APP_API || "https://note-lawn.ru"
+export const API_URL = process.env.APP_API || "https://note-lawn.ru/api"
 
 export const PARAMS_SIGN = "-"
 
