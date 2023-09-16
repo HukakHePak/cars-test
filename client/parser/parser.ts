@@ -14,53 +14,41 @@ function parser(text: String) {
        return { program: null, parameters: null }
    }
 
-  const parameters = new Map()    // запишем параметры
+  const parameters = new Map()    // сюда будем записывать параметры
+  const paramBuffer = []   // буффер параметров
 
-  let cursor = 0;
-
-  while (cursor < args.length) {    // считываем параметры пока массив не пуст и не превышен лимит 
-    const arg = args[cursor]    // получим одно слово из оставшейся кучи параметров
-
+  while(args.length) {
+    const arg = args.pop();
+    
     if (arg[0] === PARAMS_SIGN) {     // если введено имя параметра
       const parameterName = filterParameter(arg)   //  получим имя параметра без тире
 
       if(!parameterName) {    // если параметр пуст, проигнорируем
         continue;
       }
-
       //    ищем описание параметра программы
       const parameter = program.parameters.find(item => filterParameter(item.name) === parameterName) 
 
-      let nextParameter = args[cursor + 1];     // сразу же запомним следующий параметр 
-
-      const list = []
-
       switch (parameter.type) {   // здесь же распарсим строчные значения в нужные
         case PARAMETER_TYPES.Number:
-          parameters.set(parameter.field, parseInt(nextParameter)) // число довольно просто, это один следующий элемент массива
+          parameters.set(parameter.field, parseInt(paramBuffer.at(-1))) // запишем последнее найденное
           break;
       
         case PARAMETER_TYPES.Date:
-          parameters.set(parameter.field, moment(nextParameter, "DD.MM.YYYY").toDate())  // аналогично с датой
+          parameters.set(parameter.field, moment(paramBuffer.at(-1), "DD.MM.YYYY").toDate())  // аналогично с датой
           break;
       
         case PARAMETER_TYPES.String:
-          // не стал заморачиваться, ищем до следующего слова, начинающегося со знака параметра
-          while(nextParameter[0] !== PARAMS_SIGN && cursor < args.length)   
-          {
-            list.push(nextParameter);
-          };
-          parameters.set(parameter.field, [...list])
-          cursor += list.length - 1;
-          list.splice(0);
+          parameters.set(parameter.field, [...paramBuffer])   //    запишем что насобирали по пути к команде
+          paramBuffer.splice(0);   // почистим лист
           break;
       
         default:
           break;
       }
-    } // иначе игнорируем
-
-    cursor += 1;
+    } else {
+      paramBuffer.push(arg);
+    }
   }
 
   return { program, parameters }
