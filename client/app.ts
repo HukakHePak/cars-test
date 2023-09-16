@@ -1,10 +1,10 @@
 import dotenv from "dotenv"
 dotenv.config()
 
-import messageHandler from "./core/messageHandler"
+import interpreter from "./core/interpreter"
 
-messageHandler("get");
+interpreter("get");
 
 process.stdin.resume()
 process.stdin.setEncoding("utf8")
-process.stdin.on("data", messageHandler)
+process.stdin.on("data", interpreter)

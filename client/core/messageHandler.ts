@@ -5,52 +5,45 @@ import api, { ISortQuery } from "./api"
 import { Response } from "node-fetch"
 import moment from "moment"
 
-async function messageHandler (data: String) {
-    const args = parser(data)
-    const params = args.parameters
-  
-    let request: Promise<Response> | null = null
-  
-    let car = {} as ICar
-  
-    switch (args.program) {
-      case REST_API.GET:
-        request = api.get(<ISortQuery>{
-          sortBy: params.get("by"),
-          sortTo: params.get("to")
-        })
-        break
-      case REST_API.PUT:
-        car._id = params.get("id")
-      case REST_API.POST:
-        car.brand = params.get("brand")
-        car.model = params.get("model")
-        car.price = parseInt(params.get("price"))
-        car.productionDate = moment(params.get("date"), "DD.MM.YYYY").toDate()
-        car.color = params.get("color")
-  
-        request = api.post(car)
-        break
-      case REST_API.DELETE:
-        request = api.delete(params.get("id"))
-        break
-      case PROGRAMS.QUIT:
-      case PROGRAMS.EXIT:
-        console.log("Goodbye")
-        return
-      default:
-        break
-    }
-  
-    if (!request) {
-      console.error("bad args")
-      return
-    }
-  
-    request
-      .then((data) => data.json())
-      .then(console.log)
-      .catch(console.error)
+async function messageHandler (request: Promise<Response>) {   
+  if (!request) {
+    console.error("bad args")
+    return
   }
+
+  const response = await request
+  const message = await response.text()
+
+  if(response.status === 200) {
+    console.log(JSON.parse(message))
+  } else {
+    console.error({
+      code: response.status,
+      message
+    })
+  }
+
+  
+    // request.then(data => {console.log(data); return data.text()}).then(data => {console.log(data); return data})
+    
+    // request .then(response => {
+    //     const jsonPromise = response.json();
+    //     const textPromise = response.text();
+    //     return Promise.all([jsonPromise, textPromise]);
+    //   }).then(console.log)
+    // .catch(console.error);
+
+    // request
+    //     .then(data => {
+    //         try {
+    //             return data.json()
+    //         } catch (e) {
+    //             return data
+    //         }
+    //     })
+    //   .then(console.log)
+    //   .catch(console.error)
+
+}
 
   export default messageHandler

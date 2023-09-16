@@ -1,10 +1,12 @@
+import safe from "api/middleware/safe"
 import express, { Request, Response } from "express"
+import createHttpError from "http-errors"
 import { SortOrder } from "mongoose"
 import Car, { ICar } from "schemas/car"
 
 const router = express.Router()
 
-router.get("/", async (req: Request, res: Response) => {
+router.get("/", safe(async (req: Request, res: Response) => {
   const { sortBy, sortTo } = req.query
 
   const sortQuery = {
@@ -14,53 +16,33 @@ router.get("/", async (req: Request, res: Response) => {
   const cars: ICar[] = await Car.find({ deletedAt: null }).sort(sortQuery)
 
   res.send(cars)
-})
+}))
 
-router.post("/", async (req: Request, res: Response) => {
+router.post("/", safe(async (req: Request, res: Response) => {
   const car: ICar = req.body
 
   const data = await Car.create(car)
 
-  if (data) {
-    res.send({ message: "OK", data })
-  } else {
-    res.sendStatus(404)
-  }
-})
+  res.send(data)
+}))
 
-router.put("/", async (req: Request, res: Response) => {
+router.put("/",safe( async (req: Request, res: Response) => {
   const car: ICar = req.body
 
   if (!car._id) {
-    res.sendStatus(404)
-    return
+    throw createHttpError(400, "_id is not defined")
   }
 
   const data = await Car.findOneAndUpdate({ _id: car._id }, car)
 
-  if (data) {
-    res.send({ message: "OK", data: { id: data._id } })
-  } else {
-    res.sendStatus(404)
-  }
-})
+  res.send(data)
+}))
 
-router.delete("/:id", async (req: Request, res: Response) => {
-  const { id } = req.params
+router.delete("/:id", safe(async (req: Request, res: Response) => {
+  const data = await Car.findByIdAndUpdate(req.params.id, { deletedAt: Date.now() })
 
-  if(!id) {
-    res.sendStatus(404)
-    return
-  }
-
-  const data = await Car.findByIdAndUpdate(id, { deletedAt: Date.now() })
-
-  if (data) {
-    res.send({ message: "OK", data: { id: data._id } })
-  } else {
-    res.sendStatus(404)
-  }
-})
+  res.send(data)
+}))
 
 const carsRoute = router
 

@@ -1,4 +1,4 @@
-import fetch from "node-fetch"
+import fetch, { RequestInfo, RequestInit, Response } from "node-fetch"
 import { API_URL, REST_API } from "./consts"
 
 export type ISortQuery = { sortBy: string | ""; sortTo: string | ""}
@@ -6,41 +6,36 @@ export type ISortQuery = { sortBy: string | ""; sortTo: string | ""}
 function get(sortQuery: ISortQuery) {
   const query = new URLSearchParams(sortQuery)
 
-  try {
-    return fetch(`${API_URL}/?${query}`)
-  } catch (e) {
-    console.error(e)
-    return null
-  }
+  return fetch(`${API_URL}?${query}`)
 }
 
 function post(data: Object) {
-  try {
+
     return fetch(API_URL, {
       method: REST_API.POST,
       body: JSON.stringify(data),
       headers: { "Content-Type": "application/json" }
     })
-  } catch (e) {
-    console.error(e)
-    return null
-  }
+}
+
+function put(data: Object) {
+    return fetch(API_URL, {
+      method: REST_API.PUT,
+      body: JSON.stringify(data),
+      headers: { "Content-Type": "application/json" }
+    })
 }
 
 function _delete(id: string) {
-  try {
     return fetch(`${API_URL}/${id || ""}`, {
       method: REST_API.DELETE
     })
-  } catch (e) {
-    console.error(e)
-    return null
-  }
 }
 
 const api = {
   get,
   post,
+  put,
   delete: _delete
 }
 
