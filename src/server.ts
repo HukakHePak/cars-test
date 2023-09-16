@@ -1,6 +1,7 @@
 import express from "express"
 import mongo from "./mongo"
 import mongoose from "mongoose"
+import cors from "cors"
 
 const app = express()
 
@@ -9,11 +10,11 @@ dotenv.config()
 
 import router from "./api/router"
 import { successConnectLog, ErrorConnect } from "./utils/utils"
-import decors from "./de-cors"
 
-app.use(decors)
+app.use(cors({
+  origin: "*"
+}))
 
-app.enable("trust proxy")
 app.use(express.json())
 
 const port = process.env.PORT || 3000
