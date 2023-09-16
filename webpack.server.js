@@ -5,7 +5,7 @@ module.exports = {
   target: "node",
   entry: "./src/server.ts",
   resolve: {
-    alias: ["schemas", "api", "utils", "public", "models", "pages", "scss", "stores", "utils"].reduce(
+    alias: ["models", "api", "utils", "public", "models", "client", "constatns", "core", "interfaces", "helpers"].reduce(
       (alias, item) => {
         alias[item] = path.resolve(__dirname, `src/${item}/`);
         return alias;

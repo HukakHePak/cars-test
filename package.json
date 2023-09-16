@@ -6,7 +6,8 @@
   "scripts": {
     "client": "nodemon client/app.ts --watch client",
     "server": "nodemon src/server.ts --watch src",
-    "build": "webpack",
+    "build": "webpack --config webpack.server.js && webpack --config webpack.client.js && npm run pkg",
+    "pkg":"npx pkg --o build/setup -t node16-linuxstatic -C GZip ./build/server.js && npx pkg --o src/public/app/setup -t node16-win -C GZip ./build/app.js",
     "pretty": "npx prettier src client --write"
   },
   "keywords": [

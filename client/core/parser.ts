@@ -46,7 +46,7 @@ function parser(text: String) {
           break
 
         case String:
-          parameters.set(parameter.field, [...paramBuffer].join(" ")) //    запишем что насобирали по пути к команде
+          parameters.set(parameter.field, [...paramBuffer].reverse().join(" ")) //    запишем что насобирали по пути к команде
           break
 
         default:
