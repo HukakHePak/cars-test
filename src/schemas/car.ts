@@ -5,6 +5,8 @@ export interface ICar extends mongoose.Document {
   model: String
   price: Number
   productionDate: Date
+  createdAt: Date
+  deletedAt: Date
   color: String
 }
 
@@ -12,7 +14,9 @@ export const CarSchema = new mongoose.Schema({
   brand: String,
   model: String,
   price: Number,
-  productionDate: String,
+  productionDate: Date,
+  createdAt: { type: Date, default: Date.now() },
+  deletedAt: Date,
   color: String
 })
 

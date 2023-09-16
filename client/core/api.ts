@@ -6,12 +6,15 @@ export type ISortQuery = { sortBy: string; sortTo: string }
 function get(sortQuery: ISortQuery) {
   const query = new URLSearchParams(sortQuery)
 
-  return fetch(API_URL + "/?" + query)
+  try {
+    return fetch(`${API_URL}/?${query}`)
+  } catch (e) {
+    console.error(e)
+    return null
+  }
 }
 
 function post(data: Object) {
-
-    console.log(data)
   try {
     return fetch(API_URL, {
       method: REST_API.POST,
@@ -24,12 +27,10 @@ function post(data: Object) {
   }
 }
 
-function _delete(data: Object) {
+function _delete(id: string) {
   try {
-    return fetch(API_URL, {
-      method: REST_API.POST,
-      body: JSON.stringify(data),
-      headers: { "Content-Type": "application/json" }
+    return fetch(`${API_URL}/${id}`, {
+      method: REST_API.DELETE
     })
   } catch (e) {
     console.error(e)

@@ -6,6 +6,7 @@ import api, { ISortQuery } from "./core/api"
 import { REST_API } from "./core/consts"
 import parser from "./core/parser"
 import { Response } from "node-fetch"
+import moment from "moment"
 
 process.stdin.resume()
 process.stdin.setEncoding("utf8")
@@ -30,7 +31,7 @@ process.stdin.on("data", async (data: String) => {
       car.brand = params.get("brand")
       car.model = params.get("model")
       car.price = parseInt(params.get("price"))
-      car.productionDate = params.get("date")
+      car.productionDate = moment(params.get("date"), "DD.MM.YYYY").toDate()
       car.color = params.get("color")
 
       request = api.post(car)
@@ -38,7 +39,10 @@ process.stdin.on("data", async (data: String) => {
     case REST_API.DELETE:
       request = api.delete(params.get("id"))
       break
-
+    case "QUIT":
+    case "EXIT":
+      console.log("Goodbye")
+      return
     default:
       break
   }
@@ -48,9 +52,8 @@ process.stdin.on("data", async (data: String) => {
     return
   }
 
-  request.then(data => data.json()).then(console.log).catch(console.error)
-
-  // const response = await request.then(data => data.json())
-
-  // console.log(response)
+  request
+    .then((data) => data.json())
+    .then(console.log)
+    .catch(console.error)
 })

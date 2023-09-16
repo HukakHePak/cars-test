@@ -11,9 +11,11 @@ dotenv.config()
 import router from "./api/router"
 import { successConnectLog, ErrorConnect } from "./utils/utils"
 
-app.use(cors({
-  origin: "*"
-}))
+app.use(
+  cors({
+    origin: "*"
+  })
+)
 
 app.use(express.json())
 
