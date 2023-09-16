@@ -12,6 +12,6 @@ export function ErrorConnect(log: string) {
   return new Error(`${log} init connection error.`)
 }
 
-export function filterParameter (parameterName: string | String) {
-  return parameterName.split(PARAMS_SIGN).join("").toLowerCase();
+export function filterParameter(parameterName: string | String) {
+  return parameterName.split(PARAMS_SIGN).join("").toLowerCase()
 }

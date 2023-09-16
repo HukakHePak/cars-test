@@ -1,10 +1,10 @@
 import { Response } from "node-fetch"
 
-async function messageHandler (request: Promise<Response>) {   
+async function messageHandler(request: Promise<Response>) {
   const response = await request
   const message = await response.text()
 
-  if(response.status === 200) {
+  if (response.status === 200) {
     console.log(JSON.parse(message))
   } else {
     console.error({
@@ -14,4 +14,4 @@ async function messageHandler (request: Promise<Response>) {
   }
 }
 
-  export default messageHandler
+export default messageHandler

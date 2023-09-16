@@ -1,10 +1,11 @@
-import IParameter from "../interfaces/IParameter";
+import IParameter from "../interfaces/IParameter"
 
 export const API_URL = process.env.APP_API || "https://note-lawn.ru"
 
-export const PARAMS_SIGN = "-";
+export const PARAMS_SIGN = "-"
 
-export const IdParameters: IParameter[] = [{
+export const IdParameters: IParameter[] = [
+  {
     name: "id",
     short: "i",
     type: String,
@@ -28,15 +29,15 @@ export const QueryParameters: IParameter[] = [
 ]
 
 export const TARGETS = {
-  CARS: "CARS"
+  CARS: "CAR"
 }
 
 export const PROGRAMS = {
-    HELP: "HELP",
-    QUIT: "QUIT",
-    EXIT: "EXIT",
-    GET: "GET",
-    POST: "POST",
-    PUT: "PUT",
-    DELETE: "DELETE"
+  HELP: "HELP",
+  QUIT: "QUIT",
+  EXIT: "EXIT",
+  GET: "GET",
+  POST: "POST",
+  PUT: "PUT",
+  DELETE: "DELETE"
 }

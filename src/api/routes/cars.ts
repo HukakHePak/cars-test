@@ -6,43 +6,57 @@ import Car, { ICar } from "models/car"
 
 const router = express.Router()
 
-router.get("/", safe(async (req: Request, res: Response) => {
-  const { sortBy, sortTo } = req.query
+router.get(
+  "/",
+  safe(async (req: Request, res: Response) => {
+    const { sortBy, sortTo } = req.query
 
-  const sortQuery = {
-    [sortBy == "undefined" ? "createdAt" : (sortBy as string)]: sortTo == "undefined" ? -1 : (sortTo as SortOrder) 
-  }
+    const sortQuery = {
+      [sortBy == "undefined" ? "createdAt" : (sortBy as string)]: sortTo == "undefined" ? -1 : (sortTo as SortOrder)
+    }
 
-  const cars: ICar[] = await Car.find({ deletedAt: null }).sort(sortQuery)
+    const cars: ICar[] = await Car.find({ deletedAt: null }).sort(sortQuery)
 
-  res.send(cars)
-}))
+    res.send(cars)
+  })
+)
 
-router.post("/", safe(async (req: Request, res: Response) => {
-  const car: ICar = req.body
+router.post(
+  "/",
+  safe(async (req: Request, res: Response) => {
+    const car: ICar = req.body
 
-  const data = await Car.create(car)
+    const data = await Car.create(car)
 
-  res.send(data)
-}))
+    res.send(data)
+  })
+)
 
-router.put("/",safe( async (req: Request, res: Response) => {
-  const car: ICar = req.body
+router.put(
+  "/",
+  safe(async (req: Request, res: Response) => {
+    const car: ICar = req.body
 
-  if (!car._id) {
-    throw createHttpError(400, "_id is not defined")
-  }
+    if (!car._id) {
+      throw createHttpError(400, "_id is not defined")
+    }
 
-  const data = await Car.findOneAndUpdate({ _id: car._id }, car)
+    const data = await Car.findOneAndUpdate({ _id: car._id }, car)
 
-  res.send(data)
-}))
+    res.send(data)
+  })
+)
 
-router.delete("/:id", safe(async (req: Request, res: Response) => {
-  const data = await Car.findByIdAndUpdate(req.params.id, { deletedAt: Date.now() })
+router.delete(
+  "/:id",
+  safe(async (req: Request, res: Response) => {
+    console.log(req.params.id)
 
-  res.send(data)
-}))
+    const data = await Car.findByIdAndUpdate(req.params.id, { deletedAt: Date.now() })
+
+    res.send(data._id)
+  })
+)
 
 const carsRoute = router
 
