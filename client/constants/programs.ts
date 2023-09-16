@@ -6,34 +6,41 @@ const programs: IProgram[] = [
   {
     name: PROGRAMS.GET,
     target: TARGETS.CARS,
-    parameters: QueryParameters
+    parameters: QueryParameters,
+    description: "Show car list"
   },
   {
     name: PROGRAMS.POST,
     target: TARGETS.CARS,
-    parameters: CarParameters
+    parameters: CarParameters,
+    description: "Add new car"
   },
   {
     name: PROGRAMS.PUT,
     target: TARGETS.CARS,
-    parameters: CarParameters
+    parameters: CarParameters,
+    description: "Edit car by id, -id is required"
   },
   {
     name: PROGRAMS.DELETE,
     target: TARGETS.CARS,
-    parameters: IdParameters
+    parameters: IdParameters,
+    description: "Remove car from list, -id is required"
   },
   {
     name: PROGRAMS.EXIT,
-    parameters: []
+    parameters: [],
+    description: "Exit app"
   },
   {
     name: PROGRAMS.QUIT,
-    parameters: []
+    parameters: [],
+    description: "Exit app"
   },
   {
     name: PROGRAMS.HELP,
-    parameters: []
+    parameters: [],
+    description: "Help"
   }
 ]
 

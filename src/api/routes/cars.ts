@@ -6,9 +6,7 @@ import Car, { ICar } from "models/car"
 
 const router = express.Router()
 
-router.get(
-  "/",
-  safe(async (req: Request, res: Response) => {
+router.get("/", safe(async (req: Request, res: Response) => {
     const { sortBy, sortTo } = req.query
 
     const sortQuery = {
@@ -21,9 +19,7 @@ router.get(
   })
 )
 
-router.post(
-  "/",
-  safe(async (req: Request, res: Response) => {
+router.post("/", safe(async (req: Request, res: Response) => {
     const car: ICar = req.body
 
     const data = await Car.create(car)
@@ -32,9 +28,7 @@ router.post(
   })
 )
 
-router.put(
-  "/",
-  safe(async (req: Request, res: Response) => {
+router.put("/", safe(async (req: Request, res: Response) => {
     const car: ICar = req.body
 
     if (!car._id) {
@@ -43,15 +37,11 @@ router.put(
 
     const data = await Car.findOneAndUpdate({ _id: car._id }, car)
 
-    res.send(data)
+    res.send(data._id)
   })
 )
 
-router.delete(
-  "/:id",
-  safe(async (req: Request, res: Response) => {
-    console.log(req.params.id)
-
+router.delete("/:id", safe(async (req: Request, res: Response) => {
     const data = await Car.findByIdAndUpdate(req.params.id, { deletedAt: Date.now() })
 
     res.send(data._id)

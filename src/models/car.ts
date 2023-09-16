@@ -29,13 +29,15 @@ export const CarParameters: IParameter[] = [
     name: "id",
     short: "i",
     type: String,
-    field: "_id"
+    field: "_id",
+    description: "Id, required for update/delete programs"
   },
   {
     name: "brand",
     short: "b",
     type: String,
-    field: "brand"
+    field: "brand",
+    description: "Car brand, support multi words. example: -brand Aston Martin"
   },
   {
     name: "model",
@@ -47,18 +49,21 @@ export const CarParameters: IParameter[] = [
     name: "price",
     short: "p",
     type: Number,
-    field: "price"
+    field: "price",
+    description: "Car price, don't write minus pls"
   },
   {
     name: "date",
     short: "d",
     type: String,
-    field: "productionDate"
+    field: "productionDate",
+    description: "Car's production date. Format: DD.MM.YYYY. example: -date 01.01.1970"
   },
   {
     name: "color",
     short: "c",
     type: String,
-    field: "color"
+    field: "color",
+    description: "Simple string, name of car color. Not hex (use color codes instead)"
   }
 ]

@@ -2,14 +2,15 @@ import parser from "./parser"
 import { PROGRAMS } from "../constants/consts"
 import api from "./api"
 import { Response } from "node-fetch"
-import messageHandler from "./messageHandler"
+import messageHandler from "../helpers/messageHandler"
 import ISortQuery from "../interfaces/ISortQuery"
+import printHelp from "../helpers/printHelp"
 
 function interpreter(data: String) {
   const { program, parameters } = parser(data)
 
   if (!program) {
-    console.error("bad command") // TODO: show help
+    console.error("bad command. write help for see avialable commands")
     return
   }
 
@@ -38,6 +39,10 @@ function interpreter(data: String) {
     case PROGRAMS.EXIT:
       console.log("Goodbye")
       process.exit()
+
+    case PROGRAMS.HELP:
+      printHelp()
+      return
 
     default:
       break

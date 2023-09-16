@@ -9,7 +9,8 @@ export const IdParameters: IParameter[] = [
     name: "id",
     short: "i",
     type: String,
-    field: "_id"
+    field: "_id",
+    description: "Usually required for delete operations"
   }
 ]
 
@@ -18,13 +19,15 @@ export const QueryParameters: IParameter[] = [
     name: "sortBy",
     short: "by",
     type: String,
-    field: "sortBy"
+    field: "sortBy",
+    description: "Write name of field for sorting, example: -sortBy models"
   },
   {
     name: "sortTo",
     short: "to",
     type: Number,
-    field: "sortTo"
+    field: "sortTo",
+    description: "Number of sort direction. 1 asc, -1 desc. example: -to 1"
   }
 ]
 

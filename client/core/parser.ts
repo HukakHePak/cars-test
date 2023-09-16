@@ -35,25 +35,24 @@ function parser(text: String) {
         (item) => filterParameter(item.name) === parameterName || filterParameter(item.short) === parameterName
       )
 
-      switch (
-        parameter.type // здесь же распарсим строчные значения в нужные
-      ) {
+      // здесь же распарсим строчные значения в нужные
+      switch (parameter.type) {
         case Number:
-          parameters.set(parameter.name, parseInt(paramBuffer.at(-1))) // запишем последнее найденное
+          parameters.set(parameter.field, parseInt(paramBuffer.at(-1))) // запишем последнее найденное
           break
 
         case Date:
-          parameters.set(parameter.name, moment(paramBuffer.at(-1), "DD.MM.YYYY").toDate()) // аналогично с датой
+          parameters.set(parameter.field, moment(paramBuffer.at(-1), "DD.MM.YYYY").toDate()) // аналогично с датой
           break
 
         case String:
-          parameters.set(parameter.name, [...paramBuffer].join(" ")) //    запишем что насобирали по пути к команде
-          paramBuffer.splice(0) // почистим лист
+          parameters.set(parameter.field, [...paramBuffer].join(" ")) //    запишем что насобирали по пути к команде
           break
 
         default:
           break
       }
+      paramBuffer.splice(0) // почистим лист
     } else {
       paramBuffer.push(arg)
     }
