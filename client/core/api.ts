@@ -1,7 +1,7 @@
 import fetch from "node-fetch"
 import { API_URL, REST_API } from "./consts"
 
-export type ISortQuery = { sortBy: string; sortTo: string }
+export type ISortQuery = { sortBy: string | ""; sortTo: string | ""}
 
 function get(sortQuery: ISortQuery) {
   const query = new URLSearchParams(sortQuery)
@@ -29,7 +29,7 @@ function post(data: Object) {
 
 function _delete(id: string) {
   try {
-    return fetch(`${API_URL}/${id}`, {
+    return fetch(`${API_URL}/${id || ""}`, {
       method: REST_API.DELETE
     })
   } catch (e) {

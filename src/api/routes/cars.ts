@@ -8,7 +8,7 @@ router.get("/", async (req: Request, res: Response) => {
   const { sortBy, sortTo } = req.query
 
   const sortQuery = {
-    [sortBy == "undefined" ? (sortBy as string) : "createdAt"]: sortTo == "undefined" ? (sortTo as SortOrder) : -1
+    [sortBy == "undefined" ? "createdAt" : (sortBy as string)]: sortTo == "undefined" ? -1 : (sortTo as SortOrder) 
   }
 
   const cars: ICar[] = await Car.find({ deletedAt: null }).sort(sortQuery)
@@ -47,6 +47,11 @@ router.put("/", async (req: Request, res: Response) => {
 
 router.delete("/:id", async (req: Request, res: Response) => {
   const { id } = req.params
+
+  if(!id) {
+    res.sendStatus(404)
+    return
+  }
 
   const data = await Car.findByIdAndUpdate(id, { deletedAt: Date.now() })
 
