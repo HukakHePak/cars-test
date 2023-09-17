@@ -32,7 +32,7 @@ export const QueryParameters: IParameter[] = [
 ]
 
 export const TARGETS = {
-  CARS: "CAR"
+  CARS: "car"
 }
 
 export const PROGRAMS = {
