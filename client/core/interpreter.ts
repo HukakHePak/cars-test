@@ -32,7 +32,7 @@ function interpreter(data: String) {
       break
 
     case PROGRAMS.DELETE:
-      request = api.delete(body.id)
+      request = api.delete(body._id)
       break
 
     case PROGRAMS.QUIT:
