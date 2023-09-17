@@ -1,12 +1,4 @@
-<style>
-    ul {
-        list-style: none;
-    }
-    .command span:first-child {
-        padding-right: 80px;
-        color: #35D4C7;
-    }
-</style>
+<link rel="stylesheet" type="text/css" href="style.css">
 <div class="commands">
     <div>Avialable commands:</div>
     <ul>
