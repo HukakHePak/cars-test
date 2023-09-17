@@ -1,21 +1,19 @@
-
 @font-face {
-    font-family: 'Wedding';
-    src: url('../fonts/WeddingdayPersonalUseRegular-1Gvo0.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+  font-family: "Wedding";
+  src: url("../fonts/WeddingdayPersonalUseRegular-1Gvo0.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
 
 *::-webkit-scrollbar {
-    background: transparent;   
-    width: 5px;
+  background: transparent;
+  width: 5px;
 }
 *::-webkit-scrollbar-thumb {
-    background: #494C50;
-    border-radius: 2px;
+  background: #494c50;
+  border-radius: 2px;
 }
 *::-webkit-scrollbar-track {
-
 }
 
 html {
@@ -32,18 +30,25 @@ body {
   line-height: 40px;
   font-weight: 500;
   font-family: monospace;
-  color: #FFFFFF;
+  color: #ffffff;
+}
+
+a {
+  cursor: pointer;
+  color: inherit;
+  font-size: inherit;
+  text-decoration: inherit;
 }
 
 button {
-    border: none;
-    background-color: transparent;
-    box-shadow: none;
-    cursor: pointer;
+  border: none;
+  background-color: transparent;
+  box-shadow: none;
+  cursor: pointer;
 }
 
 ul {
-    list-style: none;
+  list-style: none;
 }
 
 header {
@@ -53,10 +58,15 @@ header {
   box-sizing: border-box;
   font-size: 100px;
   line-height: 140px;
-  font-family: 'Wedding';
-  color: #35D4C7;
+  font-family: "Wedding";
+  color: #35d4c7;
   text-align: center;
   word-wrap: break-word;
+  transition: 300ms ease all;
+
+  &:hover {
+    text-shadow: 0 0 5px white;
+  }
 }
 
 main {
@@ -67,62 +77,116 @@ div {
 }
 
 section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-sizing: border-box;
-    padding: 20px;
-  }
-  
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
 footer {
-    box-sizing: border-box;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
+  box-sizing: border-box;
+  padding: 20px;
+  padding-bottom: 100px;
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(0deg, rgba(53,212,199,0.05) 0%, rgba(255,255,255,0) 50%);
+
+  & img {
+    transition: 300ms ease all;
   }
-  
+
+  & div {
+    height: 100px;
+    display: flex;
+    /* flex-direction: row; */
+    background-color: transparent;
+    gap: 10px;
+    align-items: center;
+    transition: 300ms ease all;
+  }
+
+  & div:last-child {
+    position: absolute;
+    opacity: 0;
+    transform: translateY(-30%);
+
+    & img {
+        transform: translateX(50%) rotate(270deg);
+        border-radius: 100%;
+        height: 40px;
+        width: 40px;
+        object-fit: cover;
+    }
+  }
+
+  &:hover {
+    & div:first-child {
+        opacity: 0;
+        transform: translateY(30%);
+    }
+    & div:last-child {
+        opacity: 1;
+        transform: translateY(0);
+        & img {
+            transform: translateX(0);
+        }
+    }
+  }
+
+  & div:first-child img {
+    filter: invert(1);
+  }
+}
 
 .wrap {
   max-width: 980px;
 }
 
 .interpreter__preview {
-    width: 100%;
+  width: 100%;
 }
 
 .interpreter__preview video {
-    width: 100%;
-    height: auto;
-    border-radius: 6px;
-    border: 1px solid #494C50;
-    box-shadow: 0 5px 30px 0 black;
-    background: url(../media/img/interpreter-preview.png) no-repeat center;
-    background-size: cover;
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid #494c50;
+  box-shadow: 0 5px 30px 0 black;
+  background: url(../media/img/interpreter-preview.png) no-repeat center;
+  background-size: cover;
+  transition: 300ms ease all;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: 0 5px 20px 0 black;
+  }
 }
 
 .download {
-    padding-top: 100px;
+  padding: 100px 0;
 }
 
 .download button {
-     font: inherit;
-     color: #35D4C7;
-     padding: 40px 120px;
-     border: 1px solid #35D4C7;
-     border-radius: 6px;
-     box-sizing: border-box;
-     font-size: 34px;
-     transition: 200ms ease all;
+  font: inherit;
+  color: #35d4c7;
+  padding: 40px 120px;
+  border: 1px solid #35d4c7;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 34px;
+  transition: 200ms ease all;
 
-    &:hover {
-        transform: scale(1.05);
-        color: #202124;
-        background-color: #35D4C7;
-    }
+  &:hover {
+    transform: scale(1.05);
+    color: #202124;
+    background-color: #35d4c7;
+    box-shadow: 0 5px 20px 0 black;
+  }
 }
 
 .command span:first-child {
-    padding-right: 80px;
-    color: #35D4C7;
+  padding-right: 80px;
+  color: #35d4c7;
 }
