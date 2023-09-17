@@ -1,19 +1,18 @@
-<link rel="stylesheet" type="text/css" href="https://github.com/HukakHePak/cars-test/blob/pre-production/public/css/style.css">
 <div class="commands">
     <div>Avialable commands:</div>
-    <ul>
+    <ul style="list-style: none;">
         <li>
-            <div class="command">
-                <span>
+            <div>
+                <span style="padding-right: 80px;color: #35D4C7;">
                     get-cars 
                 </span>
                 <span>
                     Show car list
                 </span>
             </div>
-            <ul>
-                <li class="command">
-                    <span >
+            <ul style="list-style: none;">
+                <li>
+                    <span style="padding-right: 80px;color: #35D4C7;">
                         -sortBy, -by  
                     </span>
                     <span>
