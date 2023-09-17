@@ -13,7 +13,7 @@ router.get("/", safe(async (req: Request, res: Response) => {
       [sortBy == "undefined" ? "createdAt" : (sortBy as string)]: sortTo == "undefined" ? -1 : (sortTo as SortOrder)
     }
 
-    const cars: ICar[] = await Car.find({ deletedAt: null }).sort(sortQuery)
+    const cars: ICar[] = await Car.find({ deletedAt: null }).sort(sortQuery).select({ __v: 0 })
 
     res.send(cars)
   })

@@ -4,41 +4,43 @@ import { IdParameters, PROGRAMS, QueryParameters, TARGETS } from "./consts"
 
 const programs: IProgram[] = [
   {
-    name: PROGRAMS.GET,
-    target: TARGETS.CARS,
+    name: `get-${TARGETS.CARS}s`,
+    action: PROGRAMS.GET,
     parameters: QueryParameters,
     description: "Show car list"
   },
   {
-    name: PROGRAMS.POST,
-    target: TARGETS.CARS,
+    name: `create-${TARGETS.CARS}`,
+    action: PROGRAMS.POST,
     parameters: CarParameters,
     description: "Add new car"
   },
   {
-    name: PROGRAMS.PUT,
-    target: TARGETS.CARS,
-    parameters: CarParameters,
+    name: `edit-${TARGETS.CARS}`,
+    action: PROGRAMS.PUT,
+    parameters: [...IdParameters, ...CarParameters],
     description: "Edit car by id, -id is required"
   },
   {
-    name: PROGRAMS.DELETE,
-    target: TARGETS.CARS,
+    name: `delete-${TARGETS.CARS}`,
+    action: PROGRAMS.DELETE,
     parameters: IdParameters,
     description: "Remove car from list, -id is required"
   },
   {
     name: PROGRAMS.EXIT,
+    action: PROGRAMS.EXIT,
     parameters: [],
-    description: "Exit app"
   },
   {
     name: PROGRAMS.QUIT,
+    action: PROGRAMS.QUIT,
     parameters: [],
     description: "Exit app"
   },
   {
     name: PROGRAMS.HELP,
+    action: PROGRAMS.HELP,
     parameters: [],
     description: "Help"
   }

@@ -1,14 +1,60 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
-    <title>Cars Test</title>
-</head>
-<body>
-    hello cars test
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="icon" type="image/png" href="./media/img/favicon.png"/>
+    <title>Download Interpreter</title>
+  </head>
+  <body>
+    <a href="https://github.com/HukakHePak/cars-test">
+      <header>HukakHePak's Interpreter</header>
+    </a>
+    <main>
+      <section>
+        <div class="wrap interpreter__preview">
+          <video src="./media/video/app.mp4" controls autoplay muted loop></video>
+        </div>
+      </section>
+      <section>
+        <div class="wrap download">
+          <a href="http://localhost:5000/download" download>
+            <button>Download</button>
+          </a>
+        </div>
+      </section>
+      <section>
+        <div class="wrap">
+          <div class="commands">
+            <div>Avialable commands:</div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <a href="https://github.com/HukakHePak/cars-test">
+      <footer>
+        <div>
+          <span>github</span>
+          <img src="./media/img/open.svg" />
+        </div>
+        <div>
+          <img src="https://avatars.githubusercontent.com/u/91820343" />
+          <span>HukakHePak</span>
+        </div>
+      </footer>
+    </a>
+
+    <template class="command-template">
+      <li>
+        <div class="command">
+          <span> get-cars </span>
+          <span> Show car list </span>
+        </div>
+        <ul></ul>
+      </li>
+    </template>
     <script src="./js/index.js"></script>
-</body>
+  </body>
 </html>

@@ -18,7 +18,7 @@ function interpreter(data: String) {
 
   const body = Object.fromEntries(parameters.entries())
 
-  switch (program.name) {
+  switch (program.action) {
     case PROGRAMS.GET:
       request = api.get(<ISortQuery>body)
       break
@@ -32,7 +32,7 @@ function interpreter(data: String) {
       break
 
     case PROGRAMS.DELETE:
-      request = api.delete(body.id)
+      request = api.delete(body._id)
       break
 
     case PROGRAMS.QUIT:

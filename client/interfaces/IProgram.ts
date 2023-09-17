@@ -2,7 +2,7 @@ import IParameter from "./IParameter"
 
 interface IProgram {
   name: String
-  target?: String
+  action: String
   description?: String
   parameters: IParameter[]
 }
