@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="https://github.com/HukakHePak/cars-test/blob/pre-production/public/css/style.css">
 <div class="commands">
     <div>Avialable commands:</div>
     <ul>
