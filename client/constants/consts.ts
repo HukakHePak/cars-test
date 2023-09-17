@@ -10,7 +10,7 @@ export const IdParameters: IParameter[] = [
     short: "i",
     type: String,
     field: "_id",
-    description: "Usually required for delete operations"
+    description: "Id, required for update/delete programs"
   }
 ]
 
