@@ -6,7 +6,7 @@ import messageHandler from "../helpers/messageHandler"
 import ISortQuery from "../interfaces/ISortQuery"
 import printHelp from "../helpers/printHelp"
 
-function interpreter(data: String) {
+function interpreter(data: String): void {
   const { program, parameters } = parser(data)
 
   if (!program) {
@@ -32,12 +32,11 @@ function interpreter(data: String) {
       break
 
     case PROGRAMS.DELETE:
-      request = api.delete(body._id)
+      request = api.delete(body._id as String)
       break
 
     case PROGRAMS.QUIT:
     case PROGRAMS.EXIT:
-      console.log("Goodbye")
       process.exit()
 
     case PROGRAMS.HELP:

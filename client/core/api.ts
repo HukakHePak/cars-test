@@ -1,14 +1,14 @@
-import fetch from "node-fetch"
+import fetch, { Response } from "node-fetch"
 import { API_URL } from "../constants/consts"
 import ISortQuery from "../interfaces/ISortQuery"
 
-function get(sortQuery: ISortQuery) {
+function get(sortQuery: ISortQuery): Promise<Response> {
   const query = new URLSearchParams(sortQuery)
 
   return fetch(`${API_URL}?${query}`)
 }
 
-function post(data: Object) {
+function post(data: Object): Promise<Response> {
   return fetch(API_URL, {
     method: "POST",
     body: JSON.stringify(data),
@@ -16,7 +16,7 @@ function post(data: Object) {
   })
 }
 
-function put(data: Object) {
+function put(data: Object): Promise<Response> {
   return fetch(API_URL, {
     method: "PUT",
     body: JSON.stringify(data),
@@ -24,7 +24,7 @@ function put(data: Object) {
   })
 }
 
-function _delete(id: string) {
+function _delete(id: string): Promise<Response> {
   return fetch(`${API_URL}/${id || ""}`, {
     method: "DELETE"
   })
@@ -35,6 +35,6 @@ const api = {
   post,
   put,
   delete: _delete
-}
+} as Record<string, (data: Object | string | ISortQuery) => Promise<Response>>
 
 export default api

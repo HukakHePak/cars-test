@@ -3,5 +3,5 @@ COPY . .
 RUN npm i && npm run build
 
 FROM scratch
-COPY --from=build build/setup .
+COPY --from=build build .
 CMD ["./setup"]

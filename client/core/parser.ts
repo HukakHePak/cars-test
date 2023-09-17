@@ -1,16 +1,15 @@
-import { filterParameter } from "utils/utils"
+import { filterParameter } from "../helpers/utils"
 import { PARAMS_SIGN } from "../constants/consts"
 import programs from "../constants/programs"
 import moment from "moment"
+import IProgramParameters from "../interfaces/IProgramParameters"
 
-function parser(text: String) {
+function parser(text: String): IProgramParameters {
   const args = text.trim().split(" ")
 
-  const programName = args.splice(0, 1)[0].toLowerCase() // найдем имя запускаемой программы
+  const programName = args.shift()?.toLowerCase() // найдем имя запускаемой программы
 
-  const program = programs.find(
-    (item) => item.name.toLowerCase() === programName
-  ) // проверим, есть ли такая в нашем списке
+  const program = programs.find((item) => item.name.toLowerCase() === programName) // проверим, есть ли такая в нашем списке
 
   if (!program) {
     return { program: null, parameters: null }
@@ -46,11 +45,11 @@ function parser(text: String) {
           break
 
         case String:
-          parameters.set(parameter.field, [...paramBuffer].reverse().join(" ")) //    запишем что насобирали по пути к команде
+          parameters.set(parameter.field, paramBuffer.reverse().join(" ")) //    запишем что насобирали по пути к команде
           break
 
         default:
-          paramBuffer.push(arg)   // если со знака команды начинается не команда, то добавим в массив
+          paramBuffer.push(arg) // если со знака команды начинается не команда, то добавим в массив
           continue
       }
       paramBuffer.splice(0) // почистим лист

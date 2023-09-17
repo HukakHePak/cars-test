@@ -1,5 +1,4 @@
 import express from "express"
-import mongo from "./mongo"
 import mongoose from "mongoose"
 import cors from "cors"
 
@@ -9,7 +8,6 @@ import dotenv from "dotenv"
 dotenv.config()
 
 import router from "./api/router"
-import { successConnectLog, ErrorConnect } from "./utils/utils"
 
 app.use(
   cors({
@@ -21,22 +19,13 @@ app.use(express.json())
 
 const port = process.env.PORT || 3000
 
-app.listen(port, () => {
-  mongo.connect((err: mongoose.Error, db: mongoose.Connection) => {
-    if (!db || err) {
-      throw ErrorConnect("MongoDB")
-    }
-    successConnectLog("MongoDB")
-  })
-
+app.listen(port, ():void => {
   mongoose
-    .connect(process.env.MONGOOSE || "")
-    .then(() => successConnectLog("Mongoose"))
+    .connect(process.env.MONGO || "mongodb://127.0.0.1:27017/cars")
+    .then(() => console.log(`Successfully connected to Mongoose`))
     .catch(() => {
-      throw ErrorConnect("Mongoose")
+      console.error("Mongoose init connection error")
     })
-
-  // app.use("/public/", express.static("./public"))
 
   app.use("/", router)
 

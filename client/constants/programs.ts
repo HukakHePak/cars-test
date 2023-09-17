@@ -30,7 +30,7 @@ const programs: IProgram[] = [
   {
     name: PROGRAMS.EXIT,
     action: PROGRAMS.EXIT,
-    parameters: [],
+    parameters: []
   },
   {
     name: PROGRAMS.QUIT,
