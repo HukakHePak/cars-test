@@ -5,10 +5,76 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
-    <title>Cars Test</title>
+    <title>Cars cli manager</title>
 </head>
 <body>
-    hello cars test
+    <header>HukakHePak's Interpreter</header>
+    <main>
+        <section>
+            <div class="wrap interpreter__preview">
+                <video src="./media/video/app.mp4" controls autoplay muted> </video>
+            </div>
+        </section>
+        <section>
+            <div class="wrap download">
+                <a href="">
+                    <button>
+                        Download
+                    </button>
+                </a>
+            </div>
+        </section>
+        <section>
+            <div class="wrap">
+                   <div class="commands">
+                    <div>Avialable commands:</div>
+                    <ul>
+                        <li>
+                            <div class="command">
+                                <span>
+                                    get-cars 
+                                </span>
+                                <span>
+                                    Show car list
+                                </span>
+                            </div>
+                            <ul>
+                                <li class="command">
+                                    <span >
+                                        -sortBy, -by  
+                                    </span>
+                                    <span>
+                                        Write name of field for sorting, example: -sortBy models
+                                    </span>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                          -sortBy, -by     Write name of field for sorting, example: -sortBy models
+                          -sortTo, -to     Number of sort direction. 1 asc, -1 desc. example: -to 1
+                    create-car     Add new car
+                          -brand, -b       Car brand, support multi words. example: -brand Aston Martin
+                          -model, -m
+                          -price, -p       Car price, don't write minus pls
+                          -date, -d        Car's production date. Format: DD.MM.YYYY. example: -date 01.01.1970
+                          -color, -c       Simple string, name of car color. Not hex (use color codes instead)
+                    edit-car       Edit car by id, -id is required
+                          -id, -i          Id, required for update/delete programs
+                          -brand, -b       Car brand, support multi words. example: -brand Aston Martin
+                          -model, -m
+                          -price, -p       Car price, don't write minus pls
+                          -date, -d        Car's production date. Format: DD.MM.YYYY. example: -date 01.01.1970
+                          -color, -c       Simple string, name of car color. Not hex (use color codes instead)
+                    delete-car     Remove car from list, -id is required
+                          -id, -i          Id, required for update/delete programs
+                    exit
+                    quit   Exit app
+                    help   Help
+                   </div>
+            </div>
+        </section>
+    </main>
+    <footer>github</footer>
     <script src="./js/index.js"></script>
 </body>
 </html>
