@@ -1,8 +1,9 @@
+import { RequestHandler } from "express"
 import { NextFunction, Request, Response } from "express"
 
 const safe =
-  (callback: (req: Request, res: Response, next: NextFunction) => any) =>
-  (req: Request, res: Response, next: NextFunction) => {
+  (callback: RequestHandler): RequestHandler =>
+  (req: Request, res: Response, next: NextFunction): void => {
     Promise.resolve(callback(req, res, next)).catch(next)
   }
 

@@ -1,6 +1,6 @@
 import { Response } from "node-fetch"
 
-async function messageHandler(request: Promise<Response>) {
+async function messageHandler(request: Promise<Response>): Promise<void> {
   const response = await request
 
   if (!response) {

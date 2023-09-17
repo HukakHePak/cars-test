@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express"
 import { HttpError } from "http-errors"
 
-function errorHandler(error: HttpError, req: Request, res: Response, next: NextFunction) {
+function errorHandler(error: HttpError, req: Request, res: Response, next: NextFunction): void {
   console.error(error.message, error.status)
   res.status(error.status || 500)
   res.json(error.message)

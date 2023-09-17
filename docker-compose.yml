@@ -3,11 +3,18 @@ services:
   static:
     build:
       context: .
-    ports:
-      - "5000:5000"
-    image: hukakhepak/cars-test
+    expose:
+      - 5000:5000
+    image: cars-test
     environment:
       MODE: production
       PORT: 5000
-      MONGO: mongodb://root:example@mongo:27017/
-      MONGOOSE: mongodb://root:example@mongo:27017/
+      MONGOOSE: mongodb://mongo/cars-test
+    networks: 
+      - mongo-network
+      
+networks: 
+  mongo-network:
+    name: mongo-network
+    driver: bridge
+    external: true
