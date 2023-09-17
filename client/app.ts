@@ -3,7 +3,7 @@ dotenv.config()
 
 import interpreter from "./core/interpreter"
 
-interpreter("get-car")
+interpreter("get-cars")
 
 process.stdin.resume()
 process.stdin.setEncoding("utf8")

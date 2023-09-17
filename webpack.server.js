@@ -29,6 +29,9 @@ module.exports = {
     new FileManagerPlugin({
       events: {
         onStart: {
+          delete: ["build"],
+        },
+        onEnd: { 
           copy:  [
             { source: 'public', destination: 'build/public' }
           ],

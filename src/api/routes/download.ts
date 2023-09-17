@@ -5,8 +5,6 @@ const router = express.Router()
 
 router.get("/", (req: Request, res: Response) => {
   res.sendFile(path.resolve("public/app/setup.exe" ))
-
-  res.redirect("/");
 })
 
 const downloadRoute = router

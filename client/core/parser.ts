@@ -9,7 +9,7 @@ function parser(text: String) {
   const programName = args.splice(0, 1)[0].toLowerCase() // найдем имя запускаемой программы
 
   const program = programs.find(
-    (item) => (item.target ? `${item.name}-${item.target}` : item.name).toLowerCase() === programName
+    (item) => item.name.toLowerCase() === programName
   ) // проверим, есть ли такая в нашем списке
 
   if (!program) {
@@ -36,7 +36,7 @@ function parser(text: String) {
       )
 
       // здесь же распарсим строчные значения в нужные
-      switch (parameter.type) {
+      switch (parameter?.type) {
         case Number:
           parameters.set(parameter.field, parseInt(paramBuffer.at(-1))) // запишем последнее найденное
           break
@@ -50,7 +50,8 @@ function parser(text: String) {
           break
 
         default:
-          break
+          paramBuffer.push(arg)   // если со знака команды начинается не команда, то добавим в массив
+          continue
       }
       paramBuffer.splice(0) // почистим лист
     } else {

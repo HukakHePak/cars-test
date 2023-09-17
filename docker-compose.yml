@@ -5,4 +5,9 @@ services:
       context: .
     ports:
       - "5000:5000"
-    image: hukakhepak/note-lawn
+    image: hukakhepak/cars-test
+    environment:
+      MODE: production
+      PORT: 5000
+      MONGO: mongodb://root:example@mongo:27017/
+      MONGOOSE: mongodb://root:example@mongo:27017/

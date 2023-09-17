@@ -26,13 +26,6 @@ export default Car
 
 export const CarParameters: IParameter[] = [
   {
-    name: "id",
-    short: "i",
-    type: String,
-    field: "_id",
-    description: "Id, required for update/delete programs"
-  },
-  {
     name: "brand",
     short: "b",
     type: String,
@@ -55,7 +48,7 @@ export const CarParameters: IParameter[] = [
   {
     name: "date",
     short: "d",
-    type: String,
+    type: Date,
     field: "productionDate",
     description: "Car's production date. Format: DD.MM.YYYY. example: -date 01.01.1970"
   },
