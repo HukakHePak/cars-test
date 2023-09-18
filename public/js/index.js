@@ -46,10 +46,10 @@ async function request(url) {
   }
 
   const os = window.navigator.userAgentData?.platform
-  
-  if(os !== "Windows") {
-      const button = document.querySelector(".download-btn")
-      
-      button.setAttribute('href', 'https://note-lawn.ru/app/setup')
+
+  if (os !== "Windows") {
+    const button = document.querySelector(".download-btn")
+
+    button.setAttribute("href", "./app/setup")
   }
 })()

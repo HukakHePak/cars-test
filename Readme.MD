@@ -23,16 +23,35 @@ Install dependencies
   npm install
 ```
 
-Start the server
+Execute .env.example
 
 ```bash
-  npm run start
+  cp .env.sample .env
+```
+and correct .env MONGO connection string.
+
+By default 
+
+Start the client
+
+```bash
+  npm run client
 ```
 
 Start the server
 
 ```bash
-  npm run start
+  npm run server
+```
+
+## Docker
+
+You can create build image and run server container via docker
+
+```bash
+  docker build . -t cars-test
+
+  docker run -it --rm --env-file .env cars-test
 ```
 
 ## Build
@@ -42,6 +61,17 @@ Run build
 ```bash
   npm run build
 ```
+
+# Serve build
+
+```bash
+  node build/server.js
+```
+for start server and
+```bash
+  node build/app.js
+```
+for start client console app. 
 
 ## Documentation
 
