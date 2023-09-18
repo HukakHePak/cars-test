@@ -49,6 +49,7 @@ button {
 
 ul {
   list-style: none;
+  padding-left: 40px;
 }
 
 header {
@@ -190,3 +191,38 @@ footer {
   padding-right: 80px;
   color: #35d4c7;
 }
+
+/* --------------- MEDIA MOBILE ---------------- */
+
+@media screen and (max-width: 768px) {
+  header {
+    font-size: 60px;
+    line-height: 60px;
+    /* padding: 30px; */
+  }
+
+  body {
+    font-size: 14px;
+  }
+
+  .download {
+    padding: 20px 0;
+    width: 100%;
+  }
+
+  .download button {
+    padding: 10px;
+    width: 100%;
+    font-size: 20px;
+  }
+
+  .command span:first-child {
+    padding-right: 30px;
+  }
+
+  ul {
+    padding-left: 20px;
+  }
+}
+
+
