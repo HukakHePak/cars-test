@@ -4,13 +4,11 @@ services:
     build:
       context: .
     container_name: cars
-    expose:
-      - 5000
     image: cars-test
     environment:
       MODE: production
       PORT: 5000
-      MONGOOSE: mongodb://mongo/cars-test
+      MONGO: mongodb://mongo/cars
     networks: 
       - mongo-network
       
