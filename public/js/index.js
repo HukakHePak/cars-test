@@ -36,7 +36,7 @@ async function request(url) {
       const parameters = command.querySelector("ul")
 
       item.parameters?.forEach((par) => {
-        parameters.appendChild(createLine(`${par.name}${par.short ? `, -${par.short}` : ""}`, par.description || ""))
+        parameters.appendChild(createLine(`-${par.name}${par.short ? `, -${par.short}` : ""}`, par.description || ""))
       })
 
       commands.appendChild(command)
