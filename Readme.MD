@@ -64,14 +64,16 @@ Run build
 
 # Serve build
 
+Run
+
 ```bash
   node build/server.js
 ```
-for start server and
+or 
 ```bash
-  node build/app.js
+  pm2 build/server.js
 ```
-for start client console app. 
+for start server 
 
 ## Documentation
 
