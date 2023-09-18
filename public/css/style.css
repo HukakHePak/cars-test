@@ -92,7 +92,7 @@ footer {
   padding-bottom: 100px;
   display: flex;
   justify-content: center;
-  background: linear-gradient(0deg, rgba(53, 212, 199, 0.05) 0%, rgba(255, 255, 255, 0) 50%);
+  /* background: linear-gradient(0deg, rgba(53, 212, 199, 0.05) 0%, rgba(255, 255, 255, 0) 50%); */
 }
 
 footer div {
@@ -232,8 +232,9 @@ footer:hover .github-profile img {
 }
 
 .anume-left {
-  bottom: 20%;
-  transform: translateY(50%);
+  /* bottom: 20%;
+  transform: translateY(50%); */
+  bottom: 0;
   left: 0;
 }
 
@@ -285,6 +286,6 @@ footer:hover .github-profile img {
 
   .anume-left,
   .anume-right {
-    width: 100%;
+    width: 350px;
   }
 }
