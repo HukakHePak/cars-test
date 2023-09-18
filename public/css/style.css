@@ -92,7 +92,7 @@ footer {
   padding-bottom: 100px;
   display: flex;
   justify-content: center;
-  background: linear-gradient(0deg, rgba(53, 212, 199, 0.05) 0%, rgba(255, 255, 255, 0) 50%);
+  /* background: linear-gradient(0deg, rgba(53, 212, 199, 0.05) 0%, rgba(255, 255, 255, 0) 50%); */
 }
 
 footer div {
