@@ -42,17 +42,6 @@ Run build
 ```bash
   npm run build
 ```
-After building you can copy your project on the server
-## Deploy
-
-Copy git project on remote machine and run
-
-```bash
-  npm i
-  npm run build
-  docker compose
-```
-
 
 ## Documentation
 
