@@ -232,8 +232,9 @@ footer:hover .github-profile img {
 }
 
 .anume-left {
-  bottom: 20%;
-  transform: translateY(50%);
+  /* bottom: 20%;
+  transform: translateY(50%); */
+  bottom: 0;
   left: 0;
 }
 
@@ -285,6 +286,6 @@ footer:hover .github-profile img {
 
   .anume-left,
   .anume-right {
-    width: 100%;
+    width: 350px;
   }
 }
