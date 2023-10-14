@@ -12,7 +12,7 @@ async function request(url) {
 }
 
 ;(async () => {
-  let programs = (await request("https://note-lawn.ru/help")) || (await request("http://localhost:5000/help"))
+  let programs = (await request("https://interpreter.note-lawn.ru/help")) || (await request("http://localhost:5000/help"))
 
   if (programs) {
     const codeSection = document.querySelector(".commands")
@@ -50,6 +50,6 @@ async function request(url) {
   if (os !== "Windows") {
     const button = document.querySelector(".download-btn")
 
-    button.setAttribute("href", "./app/setup")
+    button.setAttribute("href", "./app/app")
   }
 })()
