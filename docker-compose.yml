@@ -10,10 +10,10 @@ services:
       PORT: 5000
       MONGO: mongodb://mongo/cars
     networks: 
-      - mongo-network
+      - nginx-network
       
 networks: 
-  mongo-network:
-    name: mongo-network
+  nginx-network:
+    name: nginx-network
     driver: bridge
     external: true
