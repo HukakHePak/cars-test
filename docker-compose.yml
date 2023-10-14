@@ -1,14 +1,14 @@
 version: '3.9'
 services:
-  static:
+  app:
     build:
       context: .
-    container_name: cars
     image: cars-test
+    container_name: interpreter
     environment:
       MODE: production
       PORT: 5000
-      MONGO: mongodb://mongo/cars
+      MONGO: mongodb://mongo/interpreter
     networks: 
       - nginx-network
       
