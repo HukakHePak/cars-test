@@ -11,9 +11,14 @@ services:
       MONGO: mongodb://mongo/interpreter
     networks: 
       - nginx-network
+      - mongo-network
       
 networks: 
   nginx-network:
     name: nginx-network
+    driver: bridge
+    external: true
+  mongo-network:
+    name: mongo-network
     driver: bridge
     external: true
